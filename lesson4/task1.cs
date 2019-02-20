@@ -8,7 +8,7 @@ namespace lesson4
 {
     class task1
     {
-        static void Main(string[] args)
+        static void task()
         {
             int n = 0;
 
