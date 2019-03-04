@@ -8,35 +8,41 @@ namespace MyProject
 {
     class Program
     {
+
+        class Game
+        {
+            public int from_xp = 0;
+            public int to_xp = 100;
+
+            public int player_xp1 = 100;
+            public int player_xp2 = 100;
+
+            public int player_1 = 1;
+            public int player_2 = 2;
+
+            public int minus_xp = 0;
+
+            public bool fight = true;
+
+            public int player_rnd = 1;
+        }
+
         static void Main(string[] args)
         {
-            int from_xp = 0; //
-            int to_xp = 100;
-
-            int player_1 = 1;
-            int fplayer_2 = 2;
-
-            int player_xp1 = 100;
-            int player_xp2 = 100;
-
-            int minus_xp = 0;
-
-            bool fight = true;
-
-            int player_rnd = 1;
+            Game game = new Game();
 
             Random rnd = new Random();
 
-            while (fight)
+            while (game.fight)
             {
-                player_rnd = rnd.Next(1, 3);
-                minus_xp = rnd.Next(from_xp, to_xp);
+                game.player_rnd = rnd.Next(1, 3);
+                game.minus_xp = rnd.Next(game.from_xp, game.to_xp);
 
-                if(player_rnd == 1)
+                if(game.player_rnd == 1)
                 {
-                    player_xp1 = (player_xp1 - minus_xp)<=0 ? 0 : player_xp1 - minus_xp;
+                    game.player_xp1 = (game.player_xp1 - game.minus_xp)<=0 ? 0 : game.player_xp1 - game.minus_xp;
 
-                    if (player_xp1 == 0)
+                    if (game.player_xp1 == 0)
                     {
                         Console.WriteLine("Выиграл 'player_2'");
                         break;
@@ -44,9 +50,9 @@ namespace MyProject
                 }
                 else
                 {
-                    player_xp2 =(player_xp1 - minus_xp)<=0 ? 0 : player_xp1 - minus_xp;
+                    game.player_xp2 =(game.player_xp1 - game.minus_xp)<=0 ? 0 : game.player_xp1 - game.minus_xp;
 
-                    if (player_xp2 == 0)
+                    if (game.player_xp2 == 0)
                     {
                         Console.WriteLine("Выиграл 'player_1'");
                         break;

@@ -91,13 +91,13 @@ namespace lesson2
         static void FIO()
         {
             String F;
-            F = Convert.ToString(Console.ReadLine());
+            F = Console.ReadLine();
 
             String I;
-            I = Convert.ToString(Console.ReadLine());
+            I = Console.ReadLine();
 
             String O;
-            O = Convert.ToString(Console.ReadLine());
+            O = Console.ReadLine();
 
             Console.WriteLine($"{F} {I} {O}");
 
