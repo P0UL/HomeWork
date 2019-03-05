@@ -27,7 +27,7 @@ namespace MyProject
 
             public int minus_xp = 0;
 
-            public bool gameover = true;
+            public bool gameover = false;
 
             public int player_rnd = 1;
         }
@@ -50,7 +50,7 @@ namespace MyProject
 
             Random rnd = new Random();
 
-            while (game.gameover)
+            while (!game.gameover)
             {
                 game.player_rnd = rnd.Next(0, 3);
                 game.minus_xp = rnd.Next(game.from_xp, game.to_xp);
@@ -62,6 +62,7 @@ namespace MyProject
                     if (game.xp_player_one == 0)
                     {
                         Console.WriteLine("Выиграл 'player_two'");
+                        game.gameover = true;
                         break;
                     }
                 }
@@ -72,6 +73,7 @@ namespace MyProject
                     if (game.xp_player_two == 0)
                     {
                         Console.WriteLine("Выиграл 'player_one'");
+                        game.gameover = true;
                         break;
                     }
                 }
