@@ -22,17 +22,14 @@ namespace MyProject
             public int from_xp = 0;
             public int to_xp = 100;
 
-            public int player_xp1 = 100;
-            public int player_xp2 = 100;
+            public int xp_player_one = 100;
+            public int xp_player_two = 100;
 
             public int minus_xp = 0;
 
             public bool gameover = true;
 
             public int player_rnd = 1;
-
-            
-
         }
 
         class Player
@@ -60,9 +57,9 @@ namespace MyProject
 
                 if (game.player_rnd == player.player_one)
                 {
-                    game.player_xp1 = (game.player_xp1 - game.minus_xp) <= 0 ? 0 : game.player_xp1 - game.minus_xp;
+                    game.xp_player_one = (game.xp_player_one - game.minus_xp) <= 0 ? 0 : game.xp_player_one - game.minus_xp;
 
-                    if (game.player_xp1 == 0)
+                    if (game.xp_player_one == 0)
                     {
                         Console.WriteLine("Выиграл 'player_two'");
                         break;
@@ -70,9 +67,9 @@ namespace MyProject
                 }
                 else
                 {
-                    game.player_xp2 = (game.player_xp1 - game.minus_xp) <= 0 ? 0 : game.player_xp1 - game.minus_xp;
+                    game.xp_player_two = (game.xp_player_one - game.minus_xp) <= 0 ? 0 : game.xp_player_one - game.minus_xp;
 
-                    if (game.player_xp2 == 0)
+                    if (game.xp_player_two == 0)
                     {
                         Console.WriteLine("Выиграл 'player_one'");
                         break;
@@ -80,9 +77,6 @@ namespace MyProject
                 }
             }
             Console.Read();
-
-
-
         }
 
     }
