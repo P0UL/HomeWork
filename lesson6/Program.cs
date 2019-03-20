@@ -48,7 +48,7 @@ namespace Letter
             for(int i=0; i<let.Length; i++)
             {
                 body = "body" + rand.Next(1, 4);
-                let[i] = new Letter(body, $"{dateTime} - Тестовое письмо для: {body}");
+                let[i] = new Letter(body, $"{dateTime}  Тестовое письмо для: {body}");
                 //addres += body == "" ? addres : ", "+body;
             }
 
