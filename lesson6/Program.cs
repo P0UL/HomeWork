@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lesson6
+namespace Letter
 {
     class Program
     {
@@ -22,10 +22,10 @@ namespace lesson6
                 text = Text;
             }
 
-            /*public String getText
+            public String GetText
             {
-                get { return Text; }
-            }*/
+                get { return text; } 
+            }
 
         }
 
@@ -38,19 +38,38 @@ namespace lesson6
         static void Main(string[] args)
         {
             Random rand = new Random();
-            //Letter letter = new Letter();
             String body;
-
+            String name;
+            String question;
+            String addres = "";
+            String dateTime = DateTime.Now.ToString("dd MMMM yyyy | HH:mm:ss");
             Letter[] let = new Letter[5]; 
 
-            for(int i=0; i<=let.Length; i++)
+            for(int i=0; i<let.Length; i++)
             {
                 body = "body" + rand.Next(1, 4);
-                let[i] = new Letter(body, "Тестовое письмо для: " + body);
+                let[i] = new Letter(body, $"{dateTime} - Тестовое письмо для: {body}");
+                //addres += body == "" ? addres : ", "+body;
             }
 
-            
+            Console.WriteLine($"Введите имя: ");//{addres}");
+            name = Console.ReadLine();
 
+            for(int i=0; i<let.Length; i++)
+            {
+                if (let[i].addres == name)
+                {
+                    Console.WriteLine("Открыть письмо? (y/n)");
+                    question = Console.ReadLine();
+                    if (question == "y" || let[i].open)
+                    {
+                        let[i].open = true;
+                        let[i].read = true;
+                        Console.WriteLine(let[i].GetText);
+                    }
+                }
+            }
+            Console.Read();
         }
     }
 }
