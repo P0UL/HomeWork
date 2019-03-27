@@ -11,27 +11,44 @@ namespace Letter
 
         class Letter
         {
-            public String addres = "";
+            public String adress { get; private set; }
             private String text = "";
-            public bool open = false;
-            public bool read = false;
+            public bool open { get; private set; }
+            //public bool read = false;
 
-            public Letter(String Addres, String Text)
+            public Letter(String Adres, String Text)
             {
-                addres = Addres;
+                adress = Adres;
                 text = Text;
+                open = false;
             }
 
-            public String GetText
+            /*public String GetText
             {
                 get { return text; } 
+            }*/
+
+            public void Open(string Adress)
+            {
+                if (adress == Adress) open = true;
+            }
+
+            public bool Read(out string Text)
+            {
+                Text = "";
+                if (open)
+                {
+                    Text = text;
+                    return true;
+                }
+                return false;
             }
 
         }
 
         class human
         {
-            public String Name = ""; 
+            public String Name { get; private set; } 
 
         }
 
