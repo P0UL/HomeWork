@@ -34,8 +34,12 @@ namespace MyProject
 
         class Player
         {
-            public int player_one = 1;
-            public int player_two = 2;
+            public int player;
+
+            public Player(int namber)
+            {
+                player = namber;
+            }
         }
 
         static void Main(string[] args)
@@ -46,16 +50,18 @@ namespace MyProject
         static void StartGame()
         {
             Game game = new Game();
-            Player player = new Player();
+            Player player_one = new Player(1);
+            Player player_two = new Player(2);
+            int player_rnd = 0;
 
             Random rnd = new Random();
 
             while (!game.gameover)
             {
-                game.player_rnd = rnd.Next(0, 3);
+                player_rnd = rnd.Next(0, 3);
                 game.minus_xp = rnd.Next(game.from_xp, game.to_xp);
 
-                if (game.player_rnd == player.player_one)
+                if (player_rnd == player_one.player)
                 {
                     game.xp_player_one = (game.xp_player_one - game.minus_xp) <= 0 ? 0 : game.xp_player_one - game.minus_xp;
 
