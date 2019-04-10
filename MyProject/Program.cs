@@ -8,43 +8,31 @@ namespace MyProject
 {
     class Program
     {
-
-        /*enum Playrs : int
-        {
-            player_one = 1,
-            player_two = 2,
-
-        }*/
-
-
         class Game
         {
-            public int from_xp = 0;
-            public int to_xp = 100;
+            public int minus_xp;
 
-            public int xp_player_one = 100;
-            public int xp_player_two = 100;
+            public bool gameover;
 
-            public int minus_xp = 0;
+            public Game()
+            {
 
-            public bool gameover = false;
+            }
 
-            public int player_rnd = 1;
         }
 
         class Player
         {
             public int player;
+            public int xp;
+            public int protection;
 
             public Player(int namber)
             {
                 player = namber;
+                xp = 100;
+                protection = 100;
             }
-        }
-
-        static void Main(string[] args)
-        {
-            StartGame();
         }
 
         static void StartGame()
@@ -59,13 +47,13 @@ namespace MyProject
             while (!game.gameover)
             {
                 player_rnd = rnd.Next(0, 3);
-                game.minus_xp = rnd.Next(game.from_xp, game.to_xp);
+                game.minus_xp = rnd.Next(0, 101);
 
                 if (player_rnd == player_one.player)
                 {
-                    game.xp_player_one = (game.xp_player_one - game.minus_xp) <= 0 ? 0 : game.xp_player_one - game.minus_xp;
+                    player_one.xp = (player_one.xp - game.minus_xp) <= 0 ? 0 : player_one.xp - game.minus_xp;
 
-                    if (game.xp_player_one == 0)
+                    if (player_one.xp == 0)
                     {
                         Console.WriteLine("Выиграл 'player_two'");
                         game.gameover = true;
@@ -74,9 +62,9 @@ namespace MyProject
                 }
                 else
                 {
-                    game.xp_player_two = (game.xp_player_one - game.minus_xp) <= 0 ? 0 : game.xp_player_one - game.minus_xp;
+                    player_two.xp = (player_two.xp - game.minus_xp) <= 0 ? 0 : player_two.xp - game.minus_xp;
 
-                    if (game.xp_player_two == 0)
+                    if (player_two.xp == 0)
                     {
                         Console.WriteLine("Выиграл 'player_one'");
                         game.gameover = true;
@@ -87,5 +75,9 @@ namespace MyProject
             Console.Read();
         }
 
+        static void Main(string[] args)
+        {
+            StartGame();
+        }
     }
 }
